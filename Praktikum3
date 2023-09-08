@@ -1,0 +1,252 @@
+import 'package:flutter/material.dart';
+import 'package:giffy_dialog/giffy_dialog.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: const alertdialog(),
+    );
+  }
+}
+
+class teks extends StatelessWidget {
+  const teks({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Text(('Ini Text'), style: TextStyle(
+color: Colors.blue,
+backgroundColor: Colors.pink,
+fontSize: 20.0,
+fontStyle: FontStyle.italic,
+fontWeight: FontWeight.bold
+),)
+    );
+  }
+}
+
+class praktik_icon extends StatelessWidget {
+  const praktik_icon({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Praktikum Icon"),
+      ),
+      body: Container(
+        padding: EdgeInsets.all(20),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Column(
+              children: [
+                Icon(Icons.access_alarm),
+                Text("Alarm")
+              ],
+            ),
+             Column(
+              children: [
+                Icon(Icons.phone),
+                Text("Phone")
+              ],
+            ),
+             Column(
+              children: [
+                Icon(Icons.book),
+                Text("Book")
+              ],
+            )
+          ]
+        ),
+      )
+    );
+  }
+}
+
+
+
+
+
+class Container1 extends StatelessWidget {
+  const Container1({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Container"),
+      ),
+      body: Container(
+        padding: EdgeInsets.all(32.0),
+        margin: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20.0),
+          color: Colors.purple),
+          // color: Colors.purple,
+          child: Text('Haiii', style: TextStyle(color: Colors.white,
+          fontSize: 20.0),)
+      )
+    );
+  }
+}
+
+
+
+
+
+
+class Sizedbox extends StatelessWidget {
+  const Sizedbox({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("SizedBox"),
+      ),
+      body: Column(
+        children: <Widget>[
+          Text("A", style: TextStyle(fontSize: 30.0),),
+          SizedBox(height: 20.0,),
+          Text("B", style: TextStyle(fontSize: 30.0),)
+          ],
+        )
+    );
+  }
+}
+
+
+
+class Button1 extends StatelessWidget {
+  const Button1({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Button"),
+      ),
+      body: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          MaterialButton(
+            color: Colors.amber,
+            child: Text("Raised Button"),
+            onPressed: () {},
+            ),
+            MaterialButton(
+              color: Colors.lime,
+              child: Text("Material Button"),
+              onPressed: () {},
+              ),
+              MaterialButton(
+                color: Colors.lightGreenAccent,
+                child: Text("Flat Button"),
+                onPressed: () {},
+                ),
+                ],
+                )
+    );
+  }
+}
+
+
+
+class Textfromfield extends StatelessWidget {
+  const Textfromfield({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Text From Field"),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Form(
+          child: Column(
+            children: <Widget>[
+              TextFormField(
+                decoration: InputDecoration(hintText: "Username"),
+                ),
+                TextFormField(
+                  obscureText: true,
+                  decoration: InputDecoration(hintText: "Password"),
+                  ),
+                  ElevatedButton(
+                    child: Text("Login"),
+                    onPressed: () {},
+                    )
+                  ],
+                ),
+              ),
+            )
+    );
+  }
+}
+
+
+class alertdialog extends StatelessWidget {
+  const alertdialog({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Alert Dialog"),
+      ),
+      body: Container(
+        color: Colors.red,
+        child: MaterialButton(
+          child: Text("Alert Dialog"),
+          textColor: Colors.white,
+          onPressed: (){
+            showDialog(
+   context: context,
+   builder: (BuildContext context) {
+     return GiffyDialog.image(
+       Image.network(
+         "https://media.tenor.com/KLthxRXiWp8AAAAC/google-jacket.gif",
+         height: 200,
+         fit: BoxFit.cover,
+       ),
+       title: Text(
+         'Men Wearing Jacket',
+         textAlign: TextAlign.center,
+         style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.w600)
+       ),
+       content: Text(
+         'This a men wearing jacket.',
+         textAlign: TextAlign.center,
+       ),
+       actions: [
+         TextButton(
+           onPressed: () => Navigator.pop(context, 'CANCEL'),
+           child: const Text('CANCEL'),
+         ),
+         TextButton(
+           onPressed: () => Navigator.pop(context, 'OK'),
+           child: const Text('OK'),
+         ),
+       ],
+     );
+   },
+ );
+            
+          },
+        ),
+      ),
+    );
+ }
+}
